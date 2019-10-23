@@ -10,9 +10,9 @@ import json
 from pycocotools.coco import COCO
 from pycocotools.cocoeval import COCOeval
 
-from keras_centernet.models.networks.hourglass import HourglassNetwork, normalize_image
-from keras_centernet.models.decode import CtDetDecode
-from keras_centernet.utils.letterbox import LetterboxTransformer
+from path_for_colab.keras_centernet.models.networks.hourglass import HourglassNetwork, normalize_image
+from path_for_colab.keras_centernet.models.decode import CtDetDecode
+from path_for_colab.keras_centernet.utils.letterbox import LetterboxTransformer
 
 # https://github.com/keras-team/keras-contrib/blob/master/keras_contrib/datasets/coco.py
 COCO_IDS = [0,
