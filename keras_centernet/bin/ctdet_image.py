@@ -6,10 +6,10 @@ import os
 from tqdm import tqdm
 from glob import glob
 
-from keras_centernet.models.networks.hourglass import HourglassNetwork, normalize_image
-from keras_centernet.models.decode import CtDetDecode
-from keras_centernet.utils.utils import COCODrawer
-from keras_centernet.utils.letterbox import LetterboxTransformer
+from path_for_colab.keras_centernet.models.networks.hourglass import HourglassNetwork, normalize_image
+from path_for_colab.keras_centernet.models.decode import CtDetDecode
+from path_for_colab.keras_centernet.utils.utils import COCODrawer
+from path_for_colab.keras_centernet.utils.letterbox import LetterboxTransformer
 
 
 def main():
