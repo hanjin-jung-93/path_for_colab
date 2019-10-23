@@ -14,7 +14,7 @@ from path_for_colab.keras_centernet.utils.letterbox import LetterboxTransformer
 
 def main():
   parser = argparse.ArgumentParser()
-  parser.add_argument('--fn', default='assets/demo.jpg', type=str)
+  parser.add_argument('--fn', default='path_for_colab/assets/demo.jpg', type=str)
   parser.add_argument('--output', default='output', type=str)
   parser.add_argument('--inres', default='512,512', type=str)
   args, _ = parser.parse_known_args()
