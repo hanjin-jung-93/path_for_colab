@@ -5,10 +5,10 @@ import numpy as np
 import os
 import time
 
-from keras_centernet.models.networks.hourglass import HourglassNetwork, normalize_image
-from keras_centernet.models.decode import CtDetDecode
-from keras_centernet.utils.utils import COCODrawer
-from keras_centernet.utils.letterbox import LetterboxTransformer
+from path_for_colab.keras_centernet.models.networks.hourglass import HourglassNetwork, normalize_image
+from path_for_colab.keras_centernet.models.decode import CtDetDecode
+from path_for_colab.keras_centernet.utils.utils import COCODrawer
+from path_for_colab.keras_centernet.utils.letterbox import LetterboxTransformer
 
 
 def main():
@@ -41,7 +41,18 @@ def main():
   cap = cv2.VideoCapture(0 if args.video == 'webcam' else args.video)
   out_fn = os.path.join(args.output, 'ctdet.' + os.path.basename(args.video)).replace('.mp4', '.avi')
   fourcc = cv2.VideoWriter_fourcc(*'XVID')
-  out = cv2.VideoWriter(out_fn, fourcc, args.fps, args.outres[::-1])
+  
+  #재생할 파일의 넓이 얻기
+  width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)
+  #재생할 파일의 높이 얻기
+  height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)
+  #재생할 파일의 프레임 레이트 얻기
+  fps = cap.get(cv2.CAP_PROP_FPS)
+
+  out = cv2.VideoWriter(out_fn, fourcc, fps, (int(width), int(height)))
+  
+  # out = cv2.VideoWriter(out_fn, fourcc, args.fps, args.outres[::-1])
+  
   k = 0
   tic = time.time()
   while cap.isOpened():
@@ -59,7 +70,7 @@ def main():
     if not ret:
       print("Done")
       break
-    pimg = letterbox_transformer(img)
+    pimg = letterbox_transformer(img)d
     pimg = normalize_image(pimg)
     pimg = np.expand_dims(pimg, 0)
     detections = model.predict(pimg)[0]
