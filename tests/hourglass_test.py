@@ -2,7 +2,7 @@ import pytest
 import numpy as np
 import pickle
 import cv2
-from keras_centernet.models.networks.hourglass import HourglassNetwork, normalize_image
+from path_for_colab.keras_centernet.models.networks.hourglass import HourglassNetwork, normalize_image
 import sys
 sys.path.append('/home/steffen/Pytorch/CenterNet/src')
 from lib.models.networks.large_hourglass import HourglassNet
@@ -11,8 +11,8 @@ import torch as th
 
 
 def load_input_gold():
-  inp = cv2.imread('tests/data/gold.png')
-  with open('tests/data/output.p', 'rb') as f:
+  inp = cv2.imread('path_for_colab/tests/data/gold.png')
+  with open('path_for_colab/tests/data/output.p', 'rb') as f:
     gold = pickle.load(f)
   return inp, gold['hm'], gold['reg'], gold['wh']
 
@@ -59,7 +59,7 @@ def test_hourglass_output():
   py_model.eval()
   device = 'cpu'
   py_model = py_model.to(device)
-  img = cv2.imread('tests/data/letterbox_gold.png')
+  img = cv2.imread('path_for_colab/tests/data/letterbox_gold.png')
   pimg = np.float32(img) / 127.5 - 1.0
   pimg = np.expand_dims(pimg, 0)
   py_pimg = th.from_numpy(pimg.transpose(0, 3, 1, 2))
