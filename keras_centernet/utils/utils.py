@@ -25,7 +25,7 @@ def get_rgb_color(cls, clses):
 
 
 class COCODrawer:
-  def __init__(self, font_size=24, font="assets/Roboto-Regular.ttf", char_width=14):
+  def __init__(self, font_size=24, font="path_for_colab/assets/Roboto-Regular.ttf", char_width=14):
     self.coco_names = coco_names
     self.font_size = font_size
     self.font = ImageFont.truetype(font, font_size)
