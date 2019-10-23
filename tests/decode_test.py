@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from keras_centernet.models.decode import _ctdet_decode, _hpdet_decode
+from path_for_colab.keras_centernet.models.decode import _ctdet_decode, _hpdet_decode
 from keras import backend as K
 import os
 import pickle
@@ -18,7 +18,7 @@ def test_ctdet_decode():
 
   keras_detections = K.eval(_ctdet_decode(keras_hm, keras_reg, keras_wh, output_stride=1))
 
-  gold_fn = 'tests/data/ctdet_decode_gold.p'
+  gold_fn = 'path_for_colab/tests/data/ctdet_decode_gold.p'
   if not os.path.exists(gold_fn):
     import torch as th
     import sys
@@ -55,7 +55,7 @@ def test_hpdet_decode():
 
   keras_detections = K.eval(_hpdet_decode(
     keras_hm, keras_wh, keras_kps, keras_reg, keras_hm_hp, keras_hp_offset, output_stride=1))
-  gold_fn = 'tests/data/hpdet_decode_gold.p'
+  gold_fn = 'path_for_colab/tests/data/hpdet_decode_gold.p'
   if not os.path.exists(gold_fn):
     import torch as th
     import sys
