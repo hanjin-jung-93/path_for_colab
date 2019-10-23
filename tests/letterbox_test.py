@@ -1,12 +1,12 @@
 import pytest
 import numpy as np
 import cv2
-from keras_centernet.utils import letterbox as lb
+from path_for_colab.keras_centernet.utils import letterbox as lb
 
 
 def load_input_gold():
-  inp = cv2.imread('tests/data/input.png')
-  gold = cv2.imread('tests/data/letterbox_gold.png')
+  inp = cv2.imread('path_for_colab/tests/data/input.png')
+  gold = cv2.imread('path_for_colab/tests/data/letterbox_gold.png')
   return inp, gold
 
 
